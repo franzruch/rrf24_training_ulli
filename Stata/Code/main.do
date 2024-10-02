@@ -11,7 +11,7 @@
 	
 	* Add file paths to DataWork folder and the Github folder for RRF2024
 	if "`c(username)'" == "WB537774" {
-        *global onedrive "???/DataWork"
+        global onedrive "C:\Users\WB537774\OneDrive - WBG\EMFTX\ReproducibilityCourse\DataWork"
 		global github 	"C:\Temp\Github\rrf24_training_ulli"
     }
 	
@@ -24,6 +24,7 @@
 	sysdir set PLUS "${code}/ado"
 
 
+/*
 	* Install packages 
 	local user_commands	ietoolkit iefieldkit winsor sumstats estout keeporder grc1leg2 //Add required user-written commands
 
@@ -34,9 +35,12 @@
 	   }
 	}
 
+*/	
+	
+	
 	* Run do files 
 	* Switch to 0/1 to not-run/run do-files 
-	if (0) do "${code}/01-processing-data.do"
+	if (1) do "${code}/01-processing-data.do"
 
 
 * End of do-file!	
