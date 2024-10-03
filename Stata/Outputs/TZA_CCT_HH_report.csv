@@ -4,9 +4,9 @@ Number of observations:,1758
 Number of variables:,32
 ID variable(s):,hhid
 .dta version used:,14
-Data signature:,1758:32(85547):1006362095:2223673194
+Data signature:,1758:32(85547):3112924262:1516490284
 Last saved by:,User info withheld, see option userinfo in command iesave.
-Last saved at:,15:36:56 1 Oct 2024
+Last saved at:,10:39:14 3 Oct 2024
 
 Variable type: Continuous
 Name,Label,Type,Complete obs,Mean,Std Dev,p0,p25,p50,p75,p100
@@ -32,7 +32,7 @@ submissiondate,"Date of interview",%td,1758,93,03mar2009, 38.77,20dec2008,27feb2
 Variable type: Categorical
 Name,Label,Value label,Complete obs,Number of levels,Number of unlabeled levels,Top count
 ar_unit,"What is the total area you farm? AREA UNIT",ar_unit,1620,2,0,Acre:1206 Hectare:414
-assoc,"Is there a parent association in this village?",yesno,1758,3,1,No:1270 :291 Yes:197
+assoc,"Is there a parent association in this village?",yesno,1467,2,0,No:1270 Yes:197
 crop,"Primary crop grown on this owned/rented/borrowed land",df_CROP,1620,24,0,Maize:327 Sorghum:239 Cassava:183 Paddy:168 Other pulses:161
 crop_damage,"Experienced crop damage",yesno,1758,2,0,Yes:912 No:846
 crop_prp,"Purpose of the primary crop",df_CROPPURPOSE,1509,3,0,Mainly for Food:1174 Mainly for Sale:247 Food and sale (about 50/50):88
@@ -41,11 +41,11 @@ enegry,"What is the main source of energy used for lighting?",df_LENERGY,1758,7,
 farm,"Does anyone in this household conduct farming activities?",yesno,1758,2,0,Yes:1620 No:138
 female_head,"Is the household head female?",yesno,1758,2,0,No:1072 Yes:686
 floor,"What material is the floor of this house made of?",df_FLOOR,1758,2,0,Mud/earth:1653 Concrete/Cement:105
-health,"Is there a village health commitee in this village?",yesno,1758,3,1,Yes:1003 No:667 :88
+health,"Is there a village health commitee in this village?",yesno,1670,2,0,Yes:1003 No:667
 rel_head,"What is the religion of the HH head?",df_RELIGION,1758,6,0,Muslim:1066 Protestant:299 Catholic:235 Other Christian:91 Traditionalist:57
 roof,"What material is the roof of this house made of?",df_ROOF,1758,3,0,Thatch:810 Iron sheets:616 Mud:332
-trust_lead,"In general, can you trust leaders of your community?",yesno,1758,3,1,Yes:1408 No:342 :8
-trust_mem,"In general, can you trust members of your community?",yesno,1758,3,1,Yes:972 No:776 :10
+trust_lead,"In general, can you trust leaders of your community?",yesno,1750,2,0,Yes:1408 No:342
+trust_mem,"In general, can you trust members of your community?",yesno,1748,2,0,Yes:972 No:776
 walls,"What material are the walls of this house made of?",df_WALLS,1758,3,0,Mud/Mud brick:1524 Wood/Bamboo:153 Concrete/Cement:81
 water,"What is the HH's main source of drinking water throughout the year?",df_WATER,1758,11,0,Uncovered Well:445 River, lake, pond:420 Pipe bourne water treated:336 Piped bourne water untreated:208 Bore hole/hand pump:123
 

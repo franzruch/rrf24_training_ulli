@@ -10,41 +10,34 @@
 * Checking for unique ID and fixing duplicates
 *------------------------------------------------------------------------------- 		
 
-
-	* Is ID unique
-
-	*isid hhid
-
-
-	* Identify duplicates /* You are actively going into the xls and adding whether you want to add or drop, then rerun to deal with these duplicates*/
+	* Identify duplicates 
 	ieduplicates	hhid ///
-					using "${outputs}/duplicates.xlsx", /// /*this is creating a duplicate xls to save duplicates*/
+					using "${outputs}/duplicates.xlsx", ///
 					uniquevars(key) ///
 					keepvars(vid enid submissionday) ///
 					nodaily
-
-
-
+					
+	
 *-------------------------------------------------------------------------------	
 * Define locals to store variables for each level
 *------------------------------------------------------------------------------- 							
 	
 	* IDs
-	local ids vid hhid enid
+	local ids 		hhid vid enid
 	
 	* Unit: household
-	local hh_vars floor - n_elder ///
-				food_cons - submissionday 
-	
-	* Unit: Household-member
-	local hh_mem gender age read clinic_visit sick days_sick ///
-				treat_fin treat_cost ill_impact days_impact
+	local hh_vars 	floor - n_elder ///
+					food_cons - submissionday
+					
+	* Unit: Household-memebr
+	local hh_mem	gender age read clinic_visit sick days_sick ///
+					treat_fin treat_cost ill_impact days_impact
 	
 	
 	* define locals with suffix and for reshape
 	foreach mem in `hh_mem' {
 		
-		local mem_vars 		"`mem_vars' `mem' _*"
+		local mem_vars 		"`mem_vars' `mem'_*"
 		local reshape_mem	"`reshape_mem' `mem'_"
 	}
 		
@@ -59,41 +52,36 @@
 		keep `ids' `hh_vars'
 		
 		* Check if data type is string
-		ds, has (type string)
+		ds, has(type string)	
 		
-		* fixing submission dates
-		gen submissiondate = date(submissionday, "YMD hms")
+		* Fixing submission date
+		gen submissiondate = date(submissionday, "YMD hms" )
 		format submissiondate %td
 		
-		*fix area farm variable (encode)
-		
+		* Encoding area farm unit
 		encode ar_farm_unit, gen(ar_unit)
-		labelbook ar_unit
 		
-		*destring duration
 		destring duration, replace
 		
-		*clean crop_other
-		tab crop_other
+		* clean crop_other
 		replace crop_other = proper(crop_other)
 		
 		replace crop = 40 if regex(crop_other, "Coconut") == 1
 		replace crop = 41 if regex(crop_other, "Sesame") == 1
 		
 		label define df_CROP 40 "Coconut" 41 "Sesame", add
-		tab crop
-					
+		
+				
 		
 		* Turn numeric variables with negative values into missings
 		ds, has(type numeric)
-		global numVar `r(varlist)
+		global numVars `r(varlist)'
 
 		foreach numVar of global numVars {
 			
 			recode `numVar' (-88 = .d) //.d is don't know
 		}	
 		
-
 		* Explore variables for outliers
 		sum food_cons nonfood_cons ar_farm, det
 		
@@ -136,7 +124,7 @@
 		// add variable/value labels
 		// create a template first, then edit the template and change the syntax to 
 		// iecodebook apply
-		iecodebook apply 	using ///
+		*iecodebook apply 	using ///
 								"${outputs}/hh_mem_codebook.xlsx"
 								
 		isid hhid member					

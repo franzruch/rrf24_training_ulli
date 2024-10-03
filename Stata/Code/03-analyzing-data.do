@@ -128,6 +128,8 @@
 			
 	use "${data}/Final/TZA_amenity_analysis.dta", clear
 	
+	*encode district, gen(district1) /*Move to another program */
+	
 	* createa  variable to highlight the districts in sample
 	gen in_sample = inlist(district, 1, 3, 6)
 	
